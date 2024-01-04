@@ -248,6 +248,23 @@ namespace OWASP.WebGoat.NET
 			DataTable result = DoQuery (sql, GetGoatDBConnection ());
 			return result;
 		}
+
 		
-	}
+	    public void SecretTest()
+	    {
+		string connectionString = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;";
+		using (SqlConnection connection = new SqlConnection(connectionString))
+		{
+		    try
+		    {
+			connection.Open();
+			Console.WriteLine("Connected to the database!");
+		    }
+		    catch (Exception ex)
+		    {
+			Console.WriteLine($"Error: {ex.Message}");
+		    }
+		}
+	    }
+			}
 }
